@@ -4,10 +4,11 @@ We'll load an image AWS Lambda pricing table, then ask to generate a markdown ta
 We'll also ask to model the cost for 100, 1000, and 10000 users for a service that uses Lambda (with some assumptions).
 """
 
+import os
 import anthropic
 import base64
 
-client = anthropic.Anthropic()
+client = anthropic.Anthropic(api_key=os.getenv('CLAUDE_API_KEY'))
 
 
 def load_image(path: str):

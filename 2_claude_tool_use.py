@@ -2,10 +2,11 @@
 Demo script to show how to use Claude with tools. We've created the tools in tools.py and loaded the tool schema in this script. We'll use the tools to save and load files in the local filesystem. The demo itself will create some new Python files, load them, and create a simple test case for them files.
 """
 
+import os
 import anthropic
 from tools import TOOLS_SCHEMA, use_tool
 
-client = anthropic.Anthropic()
+client = anthropic.Anthropic(api_key=os.getenv('CLAUDE_API_KEY'))
 
 
 def send_message(new_message: str, messages_history: list[dict] = []):
